@@ -27,6 +27,63 @@ a {
     transition: background 200ms ease-in;
 }
 
+.sidebar-toggle{
+    z-index: 2;
+    position: fixed;
+    top: 100px;
+    padding: 10px;
+    width: fit-content;
+    height: 50px;
+    border: 2px solid white;
+    border-left: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: rgb(114, 58, 58);
+    transition: transform 1s;
+}
+
+.slide-from-left {
+    animation: slideFromLeft 1s ease-out forwards;
+}
+
+@keyframes slideFromLeft {
+    0%{
+        left: var(--beginSlide);
+    }
+    100%{
+        left: var(--endSlide);
+    }
+}
+
+
+.falling-sand-container{
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: 400px;
+    position: fixed;
+    top: 100px;
+    background-color: black;
+    transition:  1s;
+}
+
+.color-preview-container{
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    top: 532px;
+    left: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dotted white;
+    background-color: black;
+}
+
+.sidebar-toggle:hover{
+    transform: scale(1.15)
+}
+
 /* NAVIGATION*/
 nav {
     background-color: var(--backgroundSecondaryTrans);
@@ -47,16 +104,13 @@ nav > button{
     padding: 20vh 10vw 10vh 10vw;
 }
 
-.falling-sand-container{
-    justify-self: center;
-    background-color: black;
-}
 /* PROJECTS SECTION*/
 .projects-container{
     background-color: var(--backgroundSecondary);
 }
 
 .project-single-container{
+    box-shadow: 10px 10px rgb(37, 36, 36);
     min-width: 400px;
     min-height: 400px;
     border: 1px solid white;

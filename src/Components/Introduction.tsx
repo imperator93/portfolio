@@ -2,7 +2,6 @@ import { Container } from "react-bootstrap";
 import { Details } from "./Details";
 import { useState } from "react";
 import { Colors } from "../Types/Colors";
-import { FallingSand } from "./FallingSand";
 
 export const Introduction = ({ stop }: { stop: boolean }) => {
   const [colors, setColors] = useState<Colors>({ red: 0, green: 0, blue: 0 });
@@ -50,11 +49,11 @@ export const Introduction = ({ stop }: { stop: boolean }) => {
             }
             className="position-relative intro-animation"
           >
-            I am Leo Binbauer, self-made front end developer with an ambition to
-            become full stack. I have experience with React, Typescript, CSS,
-            HTML, C#, .NET, SQL Server, EF core. I also have some experience
-            dealing with no-SQL databases such as MongoDb with Mongoose and
-            Express.js api-s.
+            I am Leo Binbauer, self-made full-stack developer with an ambition
+            to become a software engineer. I have experience with React,
+            Typescript, CSS, HTML, C#, .NET, SQL Server, EF core. I also have
+            some experience dealing with no-SQL databases such as MongoDb with
+            Mongoose and Express.js api-s.
           </p>
           <p
             style={
@@ -76,7 +75,6 @@ export const Introduction = ({ stop }: { stop: boolean }) => {
           </p>
         </div>
         <Details />
-        <FallingSand />
       </div>
     </Container>
   );

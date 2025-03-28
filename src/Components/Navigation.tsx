@@ -5,7 +5,7 @@ export const Navigation = ({
   stop,
   setStop,
 }: {
-  refs: Record<string, React.RefObject<HTMLSelectElement | null>>[];
+  refs: Record<string, React.RefObject<HTMLElement | null>>[];
   stop: boolean;
   setStop: React.Dispatch<SetStateAction<boolean>>;
 }) => {

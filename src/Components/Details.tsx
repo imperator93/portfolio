@@ -25,6 +25,7 @@ export const Details = () => {
             <FaGithub />
           </a>
         </h1>
+        <h4>Phone: +385915257465</h4>
       </div>
     </div>
   );
