@@ -9,11 +9,12 @@ export const SliderWindow = () => {
       <div className="row gap-2 justify-content-center">
         {skills.map((skill) => (
           <div
+            style={{ maxWidth: "250px" }}
             key={skill.label}
             className="gap-2 col-md-2 p-2 skill-container-single "
           >
             <img src={skill.image} />
-            <h4>{skill.label}</h4>
+            <h4 className="py-2">{skill.label}</h4>
             <p>{skill.description}</p>
           </div>
         ))}
