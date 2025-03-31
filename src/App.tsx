@@ -3,16 +3,17 @@ import { Introduction } from "./Components/Introduction";
 import { Navigation } from "./Components/Navigation";
 import { Projects } from "./Components/ProjectsSection";
 import { SliderWindow } from "./Components/SliderWindow";
-import { Footer } from "./Components/Footer";
 import { FallingSand } from "./Components/FallingSand";
 import { SidebarButton } from "./Components/SidebarButton";
 
 export const App = () => {
   const [stop, setStop] = useState(true);
   const [sidebar, setSidebar] = useState(true);
+
   const homeRef = useRef<HTMLElement>(null);
   const projectRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
+
   return (
     <main>
       <header ref={homeRef}>
@@ -31,9 +32,6 @@ export const App = () => {
       <section ref={skillsRef}>
         <SliderWindow />
       </section>
-      <footer>
-        <Footer />
-      </footer>
     </main>
   );
 };

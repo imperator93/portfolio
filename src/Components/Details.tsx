@@ -10,9 +10,9 @@ export const Details = () => {
     >
       <img className="w-25" src="https://imgur.com/ZEf0Ric.jpg" />
       <h3 className="display-6">Leo Binbauer</h3>
-      <h4>
+      <h5>
         <CiMail /> leobinbauer@gmail.com
-      </h4>
+      </h5>
       <div className="row justify-content-start">
         <h1 className="col-auto">
           <a href="https://www.linkedin.com/in/leo-binbauer-402713303/">
@@ -25,7 +25,7 @@ export const Details = () => {
             <FaGithub />
           </a>
         </h1>
-        <h4>Phone: +385915257465</h4>
+        <h5>Phone: +385915257465</h5>
       </div>
     </div>
   );

@@ -28,6 +28,14 @@ export const Projects = () => {
           </p>
         </a>
         <a
+          href="https://github.com/imperator93/webshop-backend"
+          className="col-sm-5 col-md-5 col-lg-3 p-4 fs-6 project-single-container"
+        >
+          <img src="https://imgur.com/z1mYTzZ.jpg" alt="" />
+          <h2>Webshop backend</h2> <p>(wip)</p>
+          backend with mongoDB, mongoose, express.js
+        </a>
+        <a
           href="https://github.com/imperator93/chat-app-backend"
           className="col-sm-5 col-md-5 col-lg-3 p-4 fs-6 project-single-container"
         >
@@ -35,14 +43,15 @@ export const Projects = () => {
           <h2>ChatApp backend</h2> <p>(wip)</p>
           .net, ef core, sql server. Monolith, repository pattern, AES password
           encryption
-        </a>{" "}
+        </a>
         <a
-          href="https://github.com/imperator93/webshop-backend"
+          href="https://github.com/imperator93/subtitle-parser"
           className="col-sm-5 col-md-5 col-lg-3 p-4 fs-6 project-single-container"
         >
-          <img src="https://imgur.com/z1mYTzZ.jpg" alt="" />
-          <h2>ChatApp backend</h2> <p>(wip)</p>
-          backend with mongoDB, mongoose, express.js
+          <img src="https://imgur.com/72qRcMt.jpg" alt="" />
+          <h2>Subtitle parser</h2> <p>Done!</p>
+          can increment/decrement subtitle times by an amount and write to a new
+          file
         </a>
       </div>
     </Container>

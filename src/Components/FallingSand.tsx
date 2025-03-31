@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { PickedColorContainer } from "./PickedColorContainer";
 
 export const FallingSand = React.memo(({ sidebar }: { sidebar: boolean }) => {
   const ROWS = 1008;
@@ -18,11 +19,6 @@ export const FallingSand = React.memo(({ sidebar }: { sidebar: boolean }) => {
     }
     return temp;
   });
-
-  // (() => {
-  //   const i = setInterval(() => {}, 1000);
-  //   clearInterval(i);
-  // })();
 
   const handleMouseOver = (event: React.BaseSyntheticEvent) => {
     if (mousePressed) {
@@ -73,28 +69,14 @@ export const FallingSand = React.memo(({ sidebar }: { sidebar: boolean }) => {
           }}
         ></div>
       ))}
-      <div
-        style={
-          {
-            "--beginSlide": "-400px",
-            "--endSlide": "400px",
-          } as React.CSSProperties
-        }
-        className={`color-preview-container ${!sidebar && "slide-from-left"}`}
-      >
-        <div
-          style={{
-            width: "80%",
-            height: "80%",
-            background: `rgb(${paintBrush.red}, ${paintBrush.green}, ${paintBrush.blue})`,
-          }}
-        ></div>
-      </div>
+
+      <PickedColorContainer sidebar={sidebar} paintBrush={paintBrush} />
+
       <div className="row px-2 py-1 justify-content-center">
         {["red", "green", "blue"].map((color: string) => {
           return (
             <div className="row" key={color}>
-              <label>{color}</label>
+              <label style={{ userSelect: "none" }}>{color}</label>
               <input
                 onChange={(event) => handleColorSliderOnChange(event)}
                 type="range"

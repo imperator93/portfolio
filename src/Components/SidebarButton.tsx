@@ -16,7 +16,9 @@ export const SidebarButton = ({
         } as React.CSSProperties
       }
       onClick={() => setSidebar((prev) => !prev)}
-      className={`sidebar-toggle ${!sidebar && `slide-from-left`}`}
+      className={`sidebar-toggle ${
+        !sidebar ? `slide-from-left` : "slide-to-left"
+      }`}
     >
       {sidebar ? "Draw" : "Close"}
     </button>
