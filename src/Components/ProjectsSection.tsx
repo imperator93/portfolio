@@ -42,7 +42,7 @@ export const Projects = () => {
           <img src="https://imgur.com/abgwaAf.jpg" alt="" />
           <h2>ChatApp backend</h2> <p>(wip)</p>
           .net, ef core, sql server. Monolith, repository pattern, AES password
-          encryption
+          encryption, jwt auth
         </a>
         <a
           href="https://github.com/imperator93/subtitle-parser"
@@ -50,8 +50,8 @@ export const Projects = () => {
         >
           <img src="https://imgur.com/72qRcMt.jpg" alt="" />
           <h2>Subtitle parser</h2> <p>Done!</p>
-          can increment/decrement subtitle times by an amount and write to a new
-          file
+          can increment/decrement subtitle times by int amount and write to a
+          new file
         </a>
       </div>
     </Container>

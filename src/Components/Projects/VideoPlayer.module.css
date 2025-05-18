@@ -1,0 +1,47 @@
+.video-player-container{
+    margin: 0px;
+    padding: 0px;
+    width: fill;
+    height: 75vh;
+    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-player-wrapper{
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+}
+
+.video-player{
+    width: fit-content;
+    height: fit-content;
+}
+
+.controls-bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px ;
+    padding-right: 20px ;
+}
+
+.buttons{
+    background-color: transparent;
+    color: white;
+}
+
+.control-button{
+    font-size: 30px;
+    user-select: none;
+}
+
+.control-button:hover{
+    transform: scale(1.2);
+}

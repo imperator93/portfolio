@@ -1,8 +1,11 @@
+import React from "react";
+
 import { CSSProperties } from "react";
 import { CiMail } from "react-icons/ci";
 import { CiLinkedin } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
-export const Details = () => {
+
+export const Details = React.memo(() => {
   return (
     <div
       style={{ "--delay": "4000ms", opacity: "0" } as CSSProperties}
@@ -25,8 +28,15 @@ export const Details = () => {
             <FaGithub />
           </a>
         </h1>
-        <h5>Phone: +385915257465</h5>
+        <h5>
+          <button
+            onClick={() => navigator.clipboard.writeText("+385915257465")}
+            style={{ border: "none", background: "transparent" }}
+          >
+            Phone: +385915257465
+          </button>
+        </h5>
       </div>
     </div>
   );
-};
+});

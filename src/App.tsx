@@ -5,6 +5,7 @@ import { Projects } from "./Components/ProjectsSection";
 import { SliderWindow } from "./Components/SliderWindow";
 import { FallingSand } from "./Components/FallingSand";
 import { SidebarButton } from "./Components/SidebarButton";
+import { VideoPlayer } from "./Components/Projects/VideoPlayer";
 
 export const App = () => {
   const [stop, setStop] = useState(true);
@@ -31,6 +32,9 @@ export const App = () => {
       </section>
       <section ref={skillsRef}>
         <SliderWindow />
+      </section>
+      <section>
+        <VideoPlayer />
       </section>
     </main>
   );
