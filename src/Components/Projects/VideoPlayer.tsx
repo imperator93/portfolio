@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { SetStateAction, useEffect, useRef, useState } from "react";
 
 import { v4 } from "uuid";
 
@@ -10,13 +10,16 @@ import { LiaForwardSolid } from "react-icons/lia";
 import { CiImport } from "react-icons/ci";
 
 import style from "./VideoPlayer.module.css";
+import { ProgressBar, Reference } from "./ProgressBar";
 
 export const VideoPlayer = React.memo(() => {
   const [videoControls, setVideoControls] = useState({
     isPlaying: false,
-    currentPosition: 0,
     isHovered: false,
   });
+
+  //look at this ugly thing haha
+  const reference = useRef<Reference>(null);
 
   const controlsTable = [
     <CiImport className={style["control-button"]} id="import" />,
@@ -35,10 +38,9 @@ export const VideoPlayer = React.memo(() => {
   //tracking for progress bar
   useEffect(() => {
     videoPlayerRef.current!.addEventListener("timeupdate", () => {
-      setVideoControls((prev) => ({
-        ...prev,
-        currentPosition: Math.floor(videoPlayerRef.current!.currentTime),
-      }));
+      reference.current?.setCurrentPosition(
+        videoPlayerRef.current ? videoPlayerRef.current!.currentTime : 0
+      );
     });
   }, []);
 
@@ -111,21 +113,11 @@ export const VideoPlayer = React.memo(() => {
         >
           <h1 className={style["video-title"]}>test</h1>
           <div>
-            <p style={{ marginLeft: "10px" }}>
-              {videoControls.currentPosition}:00/
-              {Math.floor(
-                videoPlayerRef.current! ? videoPlayerRef.current!.duration : 0
-              )}
-              :00
-            </p>
-            <input
-              onChange={(event) => handleProgressBarClicked(event)}
-              type="range"
-              value={videoControls.currentPosition}
-              max={
-                videoPlayerRef.current ? videoPlayerRef.current!.duration : 0
-              }
-              className={style["progress-bar"]}
+            <ProgressBar
+              reference={reference}
+              handleProgressBarClicked={handleProgressBarClicked}
+              style={style}
+              videoPlayerRef={videoPlayerRef}
             />
             <ul className={style["controls-bar"]}>
               {controlsTable.map((c) => (
