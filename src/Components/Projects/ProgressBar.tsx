@@ -30,7 +30,7 @@ export const ProgressBar = ({
   return (
     <>
       <p style={{ marginLeft: "10px" }}>
-        {currentPosition}:00/
+        {Math.floor(currentPosition)}:00/
         {Math.floor(
           videoPlayerRef.current! ? videoPlayerRef.current!.duration : 0
         )}

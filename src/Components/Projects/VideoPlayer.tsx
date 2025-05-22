@@ -1,6 +1,4 @@
-import React, { SetStateAction, useEffect, useRef, useState } from "react";
-
-import { v4 } from "uuid";
+import React, { useEffect, useRef, useState } from "react";
 
 import { CiPlay1 } from "react-icons/ci";
 import { CiPause1 } from "react-icons/ci";
@@ -16,6 +14,8 @@ export const VideoPlayer = React.memo(() => {
   const [videoControls, setVideoControls] = useState({
     isPlaying: false,
     isHovered: false,
+    defaultVideo: "https://www.w3schools.com/html/mov_bbb.webm",
+    defaultVideoName: "https://www.w3schools.com/html/mov_bbb.webm",
   });
 
   //look at this ugly thing haha
@@ -34,6 +34,18 @@ export const VideoPlayer = React.memo(() => {
   ];
 
   const videoPlayerRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (file) {
+      setVideoControls((prev) => ({
+        ...prev,
+        defaultVideo: URL.createObjectURL(file),
+        defaultVideoName: file.name,
+        isPlaying: false,
+      }));
+    }
+  };
 
   //tracking for progress bar
   useEffect(() => {
@@ -59,12 +71,12 @@ export const VideoPlayer = React.memo(() => {
         if (videoControls.isPlaying) player?.play();
         break;
       case "pause":
-        setVideoControls((prev) => ({ ...prev, isPlaying: false }));
         player?.pause();
+        setVideoControls((prev) => ({ ...prev, isPlaying: false }));
         break;
       case "play":
-        setVideoControls((prev) => ({ ...prev, isPlaying: true }));
         player?.play();
+        setVideoControls((prev) => ({ ...prev, isPlaying: true }));
         break;
       case "forwards":
         player!.currentTime += 2;
@@ -88,15 +100,27 @@ export const VideoPlayer = React.memo(() => {
 
   return (
     <div className={style["video-player-container"]}>
+      <h1
+        style={{
+          alignSelf: "flex-start",
+        }}
+      >
+        Video player
+      </h1>
       <div
         onMouseEnter={() => {}}
         style={{ position: "absolute" }}
         className={style["video-player-wrapper"]}
       >
+        <button
+          id={videoControls.isPlaying ? "pause" : "play"}
+          onClick={(event) => handleVideoControls(event)}
+          className={style["big-play-button"]}
+        />
         <video
           ref={videoPlayerRef}
           className={style["video-player"]}
-          src="https://www.w3schools.com/html/mov_bbb.webm"
+          src={videoControls.defaultVideo}
         ></video>
         <div
           onMouseEnter={() =>
@@ -105,13 +129,11 @@ export const VideoPlayer = React.memo(() => {
           onMouseLeave={() =>
             setVideoControls((prev) => ({ ...prev, isHovered: false }))
           }
-          className={`${style["controls-wrapper"]} ${
-            style[
-              videoControls.isHovered ? "fade-in control-wrapper" : "fade-out"
-            ]
-          }`}
+          className={style["controls-wrapper"]}
         >
-          <h1 className={style["video-title"]}>test</h1>
+          <h1 className={style["video-title"]}>
+            {videoControls.defaultVideoName}
+          </h1>
           <div>
             <ProgressBar
               reference={reference}
@@ -120,16 +142,37 @@ export const VideoPlayer = React.memo(() => {
               videoPlayerRef={videoPlayerRef}
             />
             <ul className={style["controls-bar"]}>
-              {controlsTable.map((c) => (
-                <button
-                  key={v4()}
-                  id={c.props.id}
-                  onClick={(event) => handleVideoControls(event)}
-                  className={style["buttons"]}
-                >
-                  {c}
-                </button>
-              ))}
+              {controlsTable.map((c) => {
+                if (c.props.id == "import")
+                  return (
+                    <label
+                      key={c.props.id}
+                      style={{
+                        width: "100%",
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {c}
+                      <input
+                        onChange={(event) => handleVideoUpload(event)}
+                        className={style["import"]}
+                        type="file"
+                        accept="video/*"
+                      />
+                    </label>
+                  );
+                return (
+                  <button
+                    key={c.props.id}
+                    id={c.props.id}
+                    onClick={(event) => handleVideoControls(event)}
+                    className={style["buttons"]}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
             </ul>
           </div>
         </div>

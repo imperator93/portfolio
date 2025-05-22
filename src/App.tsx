@@ -14,12 +14,19 @@ export const App = () => {
   const homeRef = useRef<HTMLElement>(null);
   const projectRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
-
+  const additionalStuff = useRef<HTMLElement>(null);
   return (
     <main>
       <header ref={homeRef}>
         <Navigation
-          refs={[{ Home: homeRef, Projects: projectRef, Skills: skillsRef }]}
+          refs={[
+            {
+              Home: homeRef,
+              Projects: projectRef,
+              Skills: skillsRef,
+              AdditionalStuff: additionalStuff,
+            },
+          ]}
           stop={stop}
           setStop={setStop}
         />
@@ -33,7 +40,7 @@ export const App = () => {
       <section ref={skillsRef}>
         <SliderWindow />
       </section>
-      <section>
+      <section ref={additionalStuff}>
         <VideoPlayer />
       </section>
     </main>
